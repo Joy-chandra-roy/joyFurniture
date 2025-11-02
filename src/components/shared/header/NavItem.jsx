@@ -8,13 +8,13 @@ const navItems = [
   { path: "/contact", label: "Contact" },
 ];
 
-const NavItem = () => {
+const NavItem = ({toggleMenu}) => {
   return (
     <ul className="flex flex-col md:flex-row md:space-x-8 gap-4">
       {navItems.map((item, index) => (
-        <li key={index}>
+        <li key={index} onClick={toggleMenu}>
           <NavLink
-            to={item.path}
+            to={item.path} 
             className={({ isActive}) =>
                isActive 
                 ? "text-primary font-bold" 
