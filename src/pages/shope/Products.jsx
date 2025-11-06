@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { products } from "./../../utils/products";
 import ProductCart from "./ProductCart";
+import btnIcon from "../../assets/button-icon.png"
 
 const Products = ({ headLine }) => {
   const categories = ["Chair", "Beds", "Sofa", "Lamp"];
   const [selectedCategory, setSelectedCategory]=useState("Chair")
-  
+  const [visibleProducts, setVisibleProducts]=useState(4)
 
   const filterProducts = products.filter((product)=>product.category===selectedCategory)
 
 
  
-
+ const loadMoreProducts = ()=>{
+  setVisibleProducts((prev)=>prev +4)
+ }
   return (
     <div>
       <div className="section-container">
@@ -25,6 +28,7 @@ const Products = ({ headLine }) => {
                 key={index}
                 onClick={()=>{
                   setSelectedCategory(category)
+                  setVisibleProducts(4)
                 }}
                 className={`py-1 sm:px-4 px-8 rounded-full hover:bg-primary hover:text-white transition-colors ${selectedCategory===category ?"bg-white text-primary":"text-secondary" }`}>
                 {category}
@@ -35,11 +39,25 @@ const Products = ({ headLine }) => {
 
         {/* products grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {filterProducts.map((product, index) => (
+          {filterProducts.slice(0,visibleProducts).map((product, index) => (
             <ProductCart key={index} product={product} />
-          ))}
+          ))
+          }
         </div>
 
+          {/* load more button */}
+          {
+            visibleProducts < filterProducts.length && (
+              <div className="flex justify-center items-center mt-8">
+                <button
+                 onClick={loadMoreProducts}
+                 className='text-base font-semibold text-primary flex items-center gap-1 cursor-pointer'>
+                            Viwe all
+                            <img src={btnIcon} alt='btn icon'/>
+                    </button>
+              </div>
+            )
+          }
       </div>
     </div>
   );
