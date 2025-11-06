@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { products } from "./../../utils/products";
 import ProductCart from "./ProductCart";
 
 const Products = ({ headLine }) => {
-  const categories = ["Chair", "Bads", "Sofa", "Lamp"];
+  const categories = ["Chair", "Beds", "Sofa", "Lamp"];
+  const [selectedCategory, setSelectedCategory]=useState("Chair")
+  
+
+  const filterProducts = products.filter((product)=>product.category===selectedCategory)
+
+
+ 
+
   return (
     <div>
       <div className="section-container">
@@ -15,7 +23,10 @@ const Products = ({ headLine }) => {
             {categories.map((category, index) => (
               <button
                 key={index}
-                className={`py-1 sm:px-4 px-8 rounded-full hover:bg-primary hover:text-white transition-colors`}>
+                onClick={()=>{
+                  setSelectedCategory(category)
+                }}
+                className={`py-1 sm:px-4 px-8 rounded-full hover:bg-primary hover:text-white transition-colors ${selectedCategory===category ?"bg-white text-primary":"text-secondary" }`}>
                 {category}
               </button>
             ))}
@@ -24,7 +35,7 @@ const Products = ({ headLine }) => {
 
         {/* products grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {products.map((product, index) => (
+          {filterProducts.map((product, index) => (
             <ProductCart key={index} product={product} />
           ))}
         </div>
