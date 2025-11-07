@@ -7,7 +7,7 @@ import { AiFillPlusCircle } from "react-icons/ai";
 const ProductCart = ({product}) => {
     return (
         <div>
-            <div className='bg-[#FAFAFA]'>
+            <div className='bg-white/55'>
                 <img src={getImgUrl(`${product.imageUrl}`)} alt=''/>
             </div>
             <div className='p-6 bg-white dark:bg-black shadow-sm'>

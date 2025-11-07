@@ -17,11 +17,11 @@ const Products = ({ headLine }) => {
  }
   return (
     <div>
-      <div className="section-container">
+      <div className="section-container bg-[#F7F7F7]">
         <h1 className="text-4xl font-bold text-center my-8">{headLine}</h1>
 
         {/* category tabs */}
-        <div className="bg-[#F7F7F7] max-w-sm mx-auto rounded-full md:p-2.5 py-4 mb-15">
+        <div className="bg-white max-w-sm mx-auto rounded-full md:p-2.5 py-4 mb-15">
           <div className="flex items-center md:justify-between justify-center flex-col sm:flex-row gap-4 ">
             {categories.map((category, index) => (
               <button
@@ -30,7 +30,7 @@ const Products = ({ headLine }) => {
                   setSelectedCategory(category)
                   setVisibleProducts(4)
                 }}
-                className={`py-1 sm:px-4 px-8 rounded-full hover:bg-primary hover:text-white transition-colors ${selectedCategory===category ?"bg-white text-primary":"text-secondary" }`}>
+                className={`py-1 sm:px-4 px-8 rounded-full hover:bg-primary hover:text-white transition-colors ${selectedCategory===category ?"bg-[#F7F7F7] text-primary":"text-secondary" }`}>
                 {category}
               </button>
             ))}
@@ -38,7 +38,7 @@ const Products = ({ headLine }) => {
         </div>
 
         {/* products grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
           {filterProducts.slice(0,visibleProducts).map((product, index) => (
             <ProductCart key={index} product={product} />
           ))
