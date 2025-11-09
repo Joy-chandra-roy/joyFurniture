@@ -68,7 +68,7 @@ const Navber = () => {
         {/* mobile menu items */}
         <div
           className={`md:hidden fixed top-0 left-0 w-full h-screen bg-black opacity-70 flex flex-col text-center items-center justify-center text-white space-y-6 transition-transform transform ${
-            isMenuOpen ? "-translate-x-50" : "-translate-x-full"
+            isMenuOpen ? "-translate-x-25" : "-translate-x-full"
           } `}
         >
           <div

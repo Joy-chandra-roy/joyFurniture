@@ -1,6 +1,7 @@
 import React from 'react';
 import Experiences from './../home/Experiences';
 import bannerImg from "../../assets/about-background.jpg"
+import Meterials from './../home/Meterials';
 const About = () => {
     return (
         <section className='min-h-screen'>
@@ -10,6 +11,7 @@ const About = () => {
                 <h1 className='text-5xl font-bold '>About Us</h1>
             </div>
             <Experiences/>
+            <Meterials/>
         </section>
     );
 };
